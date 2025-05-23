@@ -12,9 +12,9 @@ class LMModel_transformer(nn.Module):
     # The word embedding layer have input as a sequence of word index (in the vocabulary) and output a sequence of vector where each one is a word embedding.
     # The rnn network has input of each word embedding and output a hidden feature corresponding to each word embedding.
     # The output layer has input as the hidden feature and output the probability of each word in the vocabulary.
-    def __init__(self, nvoc, device, dim=256, nhead=8, num_layers = 4):
+    def __init__(self, nvoc, device, dim=256, nhead=8, num_layers = 4,dropout=0.5):
         super(LMModel_transformer, self).__init__()
-        self.drop = nn.Dropout(0.5)
+        self.drop = nn.Dropout(dropout)
         self.embed_dim=dim
         self.n_head=nhead
         self.num_layers=num_layers

@@ -132,3 +132,5 @@ for epoch in range(1, args.epochs+1):
 print(f"Train Perpelexity {train_perplexity}")
 print(f"Valid Perpelexity {valid_perplexity}")
 
+torch.save(data_loader.word_id,f"Language_model/src/parameters/LMM_{model_type}_vocab_list")
+torch.save(model.state_dict(),f"Language_model/src/parameters/LMM_{model_type}_state_dict")
