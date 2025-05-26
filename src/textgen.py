@@ -52,7 +52,7 @@ parser.add_argument("--dependent_length",type=int,default=8)
 parser.add_argument("--temperature",type=float,default=0.5)
 
 args=parser.parse_args()
-vocab_list=torch.load(f"Language_model/src/parameters/LMM_{args.model_type}_vocab_list")
+vocab_list=torch.load(f"Language_model/src/parameters/LMM_{args.model_type}.vocab_list")
 
 device=torch.device('cuda') if torch.cuda.is_available() else 'cpu'
 
@@ -63,9 +63,9 @@ elif args.model_type=="rnn":
 elif args.model_type=='lstm':
     model=LMModel_LSTM(len(vocab_list),device,dim=256,hidden_size=256,num_layers=2,dropout=0.5)
 else:
-    raise NameError("Model type name is not correct! The name should be \"transformer\",\"rnn\" or \"lstm\"")
+    raise ValueError("Model type name is not correct! The name should be \"transformer\",\"rnn\" or \"lstm\"")
 
-model.load_state_dict(torch.load(f'Language_model/src/parameters/LMM_{args.model_type}_state_dict'))
+model.load_state_dict(torch.load(f'Language_model/src/parameters/LMM_{args.model_type}.state_dict'))
 
 while True:
     prompt=input("\n Prompt:")
