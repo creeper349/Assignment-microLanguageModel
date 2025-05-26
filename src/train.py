@@ -12,6 +12,7 @@ import os
 import os.path as osp
 
 parser = argparse.ArgumentParser(description='PyTorch ptb Language Model')
+parser.add_argument('-data_path',type=str)  # /home/stu13/Language_model/data/biochem
 parser.add_argument('--epochs', type=int, default=40,
                     help='upper epoch limit')
 parser.add_argument('--train_batch_size', type=int, default=20, metavar='N',
@@ -50,7 +51,7 @@ else:
 train_batch_size = args.train_batch_size
 eval_batch_size = args.eval_batch_size
 batch_size = {'train': train_batch_size,'valid':eval_batch_size}
-data_loader = data.Corpus("/home/stu13/Language_model/data/ptb", batch_size, args.max_sql)
+data_loader = data.Corpus(args.data_path, batch_size, args.max_sql) 
 
 ########################################
 # Build LMModel model (bulid your language model here)
