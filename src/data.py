@@ -45,7 +45,7 @@ class Corpus(object):
                     self.word_id[word] = len(self.vocabulary)
                     self.vocabulary.append(word)
         if not "<unk>" in self.word_id.keys():
-            self.word_id[len(self.word_id)]="<unk>"
+            self.word_id["<unk>"]=len(self.word_id)
             self.vocabulary.append("<unk>")
         
         file_tokens = torch.LongTensor(num_of_words)

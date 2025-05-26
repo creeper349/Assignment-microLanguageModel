@@ -172,6 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-.pyc
-.vocab_list
-.state_dict
+*.pyc
+*.vocab_list
+*.state_dict

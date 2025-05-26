@@ -1,6 +1,5 @@
 import torch
 import argparse
-from collections import defaultdict
 from model import *
 
 def generate_text(model,vocab,prompt:str,
@@ -8,7 +7,7 @@ def generate_text(model,vocab,prompt:str,
                   topk:int=50,dependent_length=16):
     model.eval()
     tokens=prompt.lower().split()
-    input_id=torch.tensor([vocab.get(token,vocab["unk"]) for token in tokens]
+    input_id=torch.tensor([vocab.get(token,vocab["<unk>"]) for token in tokens]
                           ,dtype=torch.long).unsqueeze(0).to(device)
     if "<unk>" in vocab.keys():
         unk_id=vocab.get("<unk>")
@@ -48,7 +47,7 @@ parser=argparse.ArgumentParser(description='Language Model Text Generator')
 parser.add_argument("--model_type",type=str,default="transformer")
 parser.add_argument("--max_length",type=int,default=float("inf"))
 parser.add_argument("--topk",type=int,default=50)
-parser.add_argument("--dependent_length",type=int,default=8)
+parser.add_argument("--dependent_length",type=int,default=16)
 parser.add_argument("--temperature",type=float,default=0.5)
 
 args=parser.parse_args()
