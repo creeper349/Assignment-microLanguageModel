@@ -42,7 +42,7 @@ def fetch_clean_pubmed_abstracts(query, max_results=10000):
     return abstracts
 
 query = "metabolism"
-abstracts = fetch_clean_pubmed_abstracts(query, max_results=1000)
+abstracts = fetch_clean_pubmed_abstracts(query, max_results=10000)
 
 with open("/home/stu13/Language_model/data/biochem/valid.txt", "w", encoding="utf-8") as f:
     for abs in abstracts:

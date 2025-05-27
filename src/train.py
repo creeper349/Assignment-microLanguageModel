@@ -13,7 +13,7 @@ import os.path as osp
 
 parser = argparse.ArgumentParser(description='PyTorch ptb Language Model')
 parser.add_argument('-data_path',type=str)  # /home/stu13/Language_model/data/biochem
-parser.add_argument('--epochs', type=int, default=20,
+parser.add_argument('--epochs', type=int, default=40,
                     help='upper epoch limit')
 parser.add_argument('--train_batch_size', type=int, default=20, metavar='N',
                     help='batch size')
